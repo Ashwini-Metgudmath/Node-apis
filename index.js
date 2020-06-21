@@ -16,7 +16,7 @@ const bookServiceRouter = require('./routes/bookService');
 
 
 //const connection = mysql.createConnection(MYSQL_URL);
-const connection = require('./../database');
+const connection = require('./database');
 
 app.get((req, res, next) => {
 	console.log(`${req.method} ${req.path}`);
