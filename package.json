@@ -1,0 +1,21 @@
+{
+  "name": "lifex-book-service-challenge",
+  "version": "1.0.0",
+  "description": "lifex challenge",
+  "main": "src/backend/index.js",
+  "scripts": {
+    "test": "echo \\\"Error: no test specified\\\" && exit 1",
+    "start": "nodemon",
+    "dev": "nodemon"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "nodemon": "^2.0.4"
+  },
+  "dependencies": {
+    "dotenv": "^8.2.0",
+    "express": "^4.17.1",
+    "mysql": "github:mysqljs/mysql"
+  }
+}
