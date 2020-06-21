@@ -12,7 +12,7 @@ const connection = mysql.createConnection(MYSQL_URL);
 const serviceRouter = express.Router();
 
 serviceRouter.get('/', (req, res) =>{
-    connection.pool('SELECT * from services', (err, results, fields) =>{
+    connection.query('SELECT * from services', (err, results, fields) =>{
         if(err)
         return res.send(err);
         else
@@ -26,7 +26,7 @@ serviceRouter.post('/', (req, res) =>{
     const service = req.body;
     //console.log(`service : ${service}`);
     
-        connection.pool(`SELECT * from services where name = "${service.name}" AND city_id <> ${service.city_id}`, service, (err, results, fields) => {
+        connection.query(`SELECT * from services where name = "${service.name}" AND city_id <> ${service.city_id}`, service, (err, results, fields) => {
             if (err) {
                 return res.send(err);
             }
@@ -52,7 +52,7 @@ serviceRouter.post('/', (req, res) =>{
 serviceRouter.put('/:id', (req, res) =>{
   const service = req.body;
 	const id = parseInt(req.params.id);
-	connection.pool(`UPDATE services SET ? WHERE id=${id}`, service, (err, results, fields) =>{
+	connection.query(`UPDATE services SET ? WHERE id=${id}`, service, (err, results, fields) =>{
     if(err)
         return res.send(err);
         else
