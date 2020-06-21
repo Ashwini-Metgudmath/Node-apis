@@ -5,9 +5,9 @@ const dotenv = require('dotenv');
 dotenv.config();
 
 const { MYSQL_URL } = process.env;
-//const connection = mysql.createConnection(MYSQL_URL);
+const connection = mysql.createConnection(MYSQL_URL);
 
-const connection = require('./../database');
+//const connection = require('./../database');
 
 const userRouter = express.Router();
 
