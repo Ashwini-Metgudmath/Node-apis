@@ -15,7 +15,8 @@ const serviceRouter = require('./routes/services');
 const bookServiceRouter = require('./routes/bookService');
 
 
-const connection = mysql.createConnection(MYSQL_URL);
+//const connection = mysql.createConnection(MYSQL_URL);
+const connection = require('./../database');
 
 app.get((req, res, next) => {
 	console.log(`${req.method} ${req.path}`);
@@ -57,12 +58,12 @@ connection.on('error', function(err) {
 });
 }
 
-app.listen(PORT, (err) => {
+app.listen(process.env.PORT, (err) => {
   if(err){
     console.log(`Error in connection ${err}`)
   }
   else{
-    console.log(`Server listening on port: ${PORT}!`);
+    console.log(`Server listening on port: ${process.env.PORT}!`);
     handleDisconnect(); 
   }
     });
