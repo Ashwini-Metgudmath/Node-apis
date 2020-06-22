@@ -5,7 +5,7 @@ const mysql = require('mysql');
 const dotenv = require('dotenv');
 dotenv.config();
 
-const { PORT, MYSQL_URL } = process.env;
+//const { PORT, MYSQL_URL } = process.env;
 
 const PORT = process.env.PORT || 3000;
 
