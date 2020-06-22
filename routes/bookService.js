@@ -6,8 +6,8 @@ const { query } = require("express");
 dotenv.config();
 
 const { MYSQL_URL } = process.env;
-const connection = mysql.createConnection(MYSQL_URL);
-//const connection = require('../database');
+//const connection = mysql.createConnection(MYSQL_URL);
+const connection = require('../database');
 
 const bookServiceRouter = express.Router();
 

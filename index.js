@@ -7,6 +7,8 @@ dotenv.config();
 
 const { PORT, MYSQL_URL } = process.env;
 
+const PORT = process.env.PORT || 3000;
+
 const bodyParser = require('body-parser');;
 
 const cityRouter = require('./routes/cities');
@@ -15,8 +17,8 @@ const serviceRouter = require('./routes/services');
 const bookServiceRouter = require('./routes/bookService');
 
 
-const connection = mysql.createConnection(MYSQL_URL);
-//const connection = require('./database');
+//const connection = mysql.createConnection(MYSQL_URL);
+const connection = require('./database');
 
 app.get((req, res, next) => {
 	console.log(`${req.method} ${req.path}`);
@@ -30,6 +32,11 @@ app.use(express.json());
   
 app.use(bodyParser.json());
 //app.use('/services', serviceRouter);
+
+app.get('/', (req, res) =>{
+  res.send("Welcome to Node APIs");
+  })
+
 app.use('/cities', cityRouter);
 
 app.use('/users', userRouter);
@@ -37,6 +44,8 @@ app.use('/users', userRouter);
 app.use('/services', serviceRouter);
 
 app.use('/book_service', bookServiceRouter);
+
+
 
 function handleDisconnect() {
 connection.connect(err =>{
@@ -58,12 +67,12 @@ connection.on('error', function(err) {
 });
 }
 
-app.listen(process.env.PORT, (err) => {
+app.listen(PORT, (err) => {
   if(err){
     console.log(`Error in connection ${err}`)
   }
   else{
-    console.log(`Server listening on port: ${process.env.PORT}!`);
+    console.log(`Server listening on port: ${PORT}!`);
     handleDisconnect(); 
   }
     });
